@@ -1,0 +1,15 @@
+C:\Users\oliwe\source\repos\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.exe
+C:\Users\oliwe\source\repos\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.deps.json
+C:\Users\oliwe\source\repos\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.runtimeconfig.json
+C:\Users\oliwe\source\repos\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.runtimeconfig.dev.json
+C:\Users\oliwe\source\repos\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.dll
+C:\Users\oliwe\source\repos\2048.2\2048.2\bin\Debug\netcoreapp3.1\2048.2.pdb
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.csproj.AssemblyReference.cache
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\_2048._2.Form1.resources
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.csproj.GenerateResource.cache
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.AssemblyInfoInputs.cache
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.AssemblyInfo.cs
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.csproj.CoreCompileInputs.cache
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.dll
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.pdb
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.genruntimeconfig.cache
