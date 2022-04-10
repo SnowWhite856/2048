@@ -29,7 +29,19 @@ namespace _2048._2
         /// </summary>
         private void InitializeComponent()
         {
+            this.Coordinates = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // Coordinates
+            // 
+            this.Coordinates.AutoSize = true;
+            this.Coordinates.ForeColor = System.Drawing.Color.Snow;
+            this.Coordinates.Location = new System.Drawing.Point(12, 9);
+            this.Coordinates.Name = "Coordinates";
+            this.Coordinates.Size = new System.Drawing.Size(71, 15);
+            this.Coordinates.TabIndex = 0;
+            this.Coordinates.Text = "Coordinates";
+            this.Coordinates.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
@@ -37,6 +49,7 @@ namespace _2048._2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(539, 861);
+            this.Controls.Add(this.Coordinates);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -45,10 +58,13 @@ namespace _2048._2
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label Coordinates;
     }
 }
 

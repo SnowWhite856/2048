@@ -73,6 +73,7 @@ namespace _2048._2
             {
                 int[] Cordinates = dice.RandomBlock();
                 grid.FillRectangle(myBrush, DrawCoordinates[Cordinates[0], Cordinates[1], 0] + 3, DrawCoordinates[Cordinates[0], Cordinates[1], 1] + 3, 94, 94);
+                Coordinates.Text = "x: " + Convert.ToString(dice.lastx) + " y: " + Convert.ToString(dice.lasty) + " value: " + Convert.ToString(dice.cordinates[dice.lastx, dice.lasty]);
             }
             else
             {
@@ -86,22 +87,22 @@ namespace _2048._2
             if(e.KeyValue == 65) //A
             {
                 this.Invalidate();
-                dice.setUpCooridnates(dice.lastx, 0);
+                dice.setUpXY(dice.lastx, 0, 2);
             }
             if (e.KeyValue == 68) //D
             {
                 this.Invalidate();
-                dice.setUpCooridnates(dice.lastx, 4);
+                dice.setUpXY(dice.lastx, 4, 2);
             }
             if (e.KeyValue == 87) //W
             {
                 this.Invalidate();
-                dice.setUpCooridnates(0, dice.lasty);
+                dice.setUpXY(0, dice.lasty, 2);
             }
             if (e.KeyValue == 83) //S
             {
                 this.Invalidate();
-                dice.setUpCooridnates(4, dice.lasty);
+                dice.setUpXY(4, dice.lasty, 2);
             }
             if(e.KeyValue == 82) //R
             {
@@ -115,6 +116,12 @@ namespace _2048._2
                 int y = random.Next(5);
                 grid.FillRectangle(myBrush, DrawCoordinates[x, y, 0] + 3, DrawCoordinates[x, y, 1] + 3, 94, 94);
             }
+            Coordinates.Text = "x: " + Convert.ToString(dice.lastx) + " y: " + Convert.ToString(dice.lasty) + " value: " + Convert.ToString(dice.cordinates[dice.lastx, dice.lasty]);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
