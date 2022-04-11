@@ -1,9 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 public class Dice
 {
 	public int[,] cordinates = new int[5,5];
 	public int lastx, lasty;
+	public Graphics draw;
+	public Brush myBrush;
 
 	public Dice()
     {
@@ -15,6 +25,11 @@ public class Dice
             }
         }
     }
+
+	public void drawNew(int x, int y)
+    {
+		draw.FillRectangle(myBrush, new Rectangle(x, y, 94, 94));
+	}
 
 	public void setUpXY(int x, int y, int value)
     {

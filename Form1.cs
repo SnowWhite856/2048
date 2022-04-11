@@ -67,6 +67,10 @@ namespace _2048._2
         {
             grid = e.Graphics;
 
+            dice.draw = grid;
+
+            dice.myBrush = myBrush;
+
             GridCreate(grid);
             
             if (One)
@@ -114,7 +118,8 @@ namespace _2048._2
                 Random random = new Random();
                 int x = random.Next(5);
                 int y = random.Next(5);
-                grid.FillRectangle(myBrush, DrawCoordinates[x, y, 0] + 3, DrawCoordinates[x, y, 1] + 3, 94, 94);
+                dice.drawNew(DrawCoordinates[x, y, 0] + 3, DrawCoordinates[x, y, 1] + 3);
+                this.Invalidate();
             }
             Coordinates.Text = "x: " + Convert.ToString(dice.lastx) + " y: " + Convert.ToString(dice.lasty) + " value: " + Convert.ToString(dice.cordinates[dice.lastx, dice.lasty]);
         }
