@@ -10,10 +10,8 @@ using System.Windows.Forms;
 
 public class Dice
 {
-	public int[,] cordinates = new int[5,5];
+	public int[,] cordinatesValue = new int[5,5];
 	public int lastx, lasty;
-	public Graphics draw;
-	public Brush myBrush;
 
 	public Dice()
     {
@@ -21,36 +19,50 @@ public class Dice
         {
 			for(int z = 0; z < 5; z++)
             {
-				cordinates[i, z] = 0;
+				cordinatesValue[i, z] = 0;
             }
         }
     }
 
-	public void drawNew(int x, int y)
+	public Brush Check(int x, int y)
     {
-		draw.FillRectangle(myBrush, new Rectangle(x, y, 94, 94));
-	}
+		Brush visible = new SolidBrush(Color.LightCoral);
 
-	public void setUpXY(int x, int y, int value)
-    {
-		cordinates[lastx, lasty] = 0; 
+		Brush invisible = new SolidBrush(Color.Black);
 
-		lastx = x;
-		lasty = y;
-
-		cordinates[x, y] = value;
+		if(cordinatesValue[x, y] != 0)
+        {
+			return visible;
+        }
+        else
+        {
+			return invisible;
+        }
     }
 
-	public int[] RandomBlock()
+	public void setUpXY(int x, int y, int value, bool klawisz)
+    {
+		if (klawisz)
+		{
+			lastx = x;
+			lasty = y;
+
+			cordinatesValue[x, y] = value;
+		}
+        else
+        {
+			lastx = x;
+			lasty = y;
+
+			cordinatesValue[x, y] = value;
+		}
+    }
+
+	public void RandomBlock(bool klawisz)
     {
 		Random random = new Random();
 		int x = random.Next(5);
 		int y = random.Next(5);
-
-		setUpXY(x, y, 2);
-
-		int[] cord = { x, y };
-
-		return cord;
+		setUpXY(x, y, 2, klawisz);
     }
 }
