@@ -14,7 +14,6 @@ namespace _2048._2
     {
         Graphics grid;
         Dice dice = new Dice();
-        bool One = true;
 
         Brush bgBrush = new SolidBrush(Color.Black);
         
@@ -64,33 +63,33 @@ namespace _2048._2
 
 
             grid.FillRectangle(dice.Check(0, 0), 20 + 3, 220 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(0, 1), 120 + 3, 220 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(0, 2), 220 + 3, 220 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(0, 3), 320 + 3, 220 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(0, 4), 420 + 3, 220 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(1, 0), 120 + 3, 220 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(2, 0), 220 + 3, 220 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(3, 0), 320 + 3, 220 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(4, 0), 420 + 3, 220 + 3, 94, 94);
 
-            grid.FillRectangle(dice.Check(1, 0), 20 + 3, 320 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(0, 1), 20 + 3, 320 + 3, 94, 94);
             grid.FillRectangle(dice.Check(1, 1), 120 + 3, 320 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(1, 2), 220 + 3, 320 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(1, 3), 320 + 3, 320 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(1, 4), 420 + 3, 320 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(2, 1), 220 + 3, 320 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(3, 1), 320 + 3, 320 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(4, 1), 420 + 3, 320 + 3, 94, 94);
 
-            grid.FillRectangle(dice.Check(2, 0), 20 + 3, 420 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(2, 1), 120 + 3, 420 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(0, 2), 20 + 3, 420 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(1, 2), 120 + 3, 420 + 3, 94, 94);
             grid.FillRectangle(dice.Check(2, 2), 220 + 3, 420 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(2, 3), 320 + 3, 420 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(2, 4), 420 + 3, 420 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(3, 2), 320 + 3, 420 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(4, 2), 420 + 3, 420 + 3, 94, 94);
 
-            grid.FillRectangle(dice.Check(3, 0), 20 + 3, 520 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(3, 1), 120 + 3, 520 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(3, 2), 220 + 3, 520 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(0, 3), 20 + 3, 520 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(1, 3), 120 + 3, 520 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(2, 3), 220 + 3, 520 + 3, 94, 94);
             grid.FillRectangle(dice.Check(3, 3), 320 + 3, 520 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(3, 4), 420 + 3, 520 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(4, 3), 420 + 3, 520 + 3, 94, 94);
 
-            grid.FillRectangle(dice.Check(4, 0), 20 + 3, 620 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(4, 1), 120 + 3, 620 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(4, 2), 220 + 3, 620 + 3, 94, 94);
-            grid.FillRectangle(dice.Check(4, 3), 320 + 3, 620 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(0, 4), 20 + 3, 620 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(1, 4), 120 + 3, 620 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(2, 4), 220 + 3, 620 + 3, 94, 94);
+            grid.FillRectangle(dice.Check(3, 4), 320 + 3, 620 + 3, 94, 94);
             grid.FillRectangle(dice.Check(4, 4), 420 + 3, 620 + 3, 94, 94);
         }
 
@@ -98,17 +97,20 @@ namespace _2048._2
         {
 
         }
-
+        bool one = true;
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             grid = e.Graphics;
-            dice.RandomBlock(true);
-            if (One)
+            //dice.RandomBlock();
+
+            if (one)
             {
-                Coordinates.Text = "x: " + Convert.ToString(dice.lastx) + " y: " + Convert.ToString(dice.lasty) + " value: " + Convert.ToString(dice.cordinates[dice.lastx, dice.lasty]);
+
+                dice.cordinatesValue[4, 0] = 2;
             }
             GridCreate(e.Graphics);
-            One = false;
+
+            one = false;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -116,35 +118,31 @@ namespace _2048._2
             if(e.KeyValue == 65) //A
             {
                 this.Invalidate();
-                dice.setUpXY(dice.lastx, 0, 2, false);
+                dice.setUpXY(1);
             }
             if (e.KeyValue == 68) //D
             {
                 this.Invalidate();
-                dice.setUpXY(dice.lastx, 4, 2, false);
+                dice.setUpXY(2);
             }
             if (e.KeyValue == 87) //W
             {
                 this.Invalidate();
-                dice.setUpXY(0, dice.lasty, 2, false);
             }
             if (e.KeyValue == 83) //S
             {
                 this.Invalidate();
-                dice.setUpXY(4, dice.lasty, 2, false);
             }
-            if(e.KeyValue == 82) //R
+            /*if(e.KeyValue == 82) //R
             {
                 this.Invalidate();
-                One = true;
-            }
+            }*/
             if(e.KeyValue == 84) //T
             {
                 Random random = new Random();
                 int x = random.Next(5);
                 int y = random.Next(5);
             }
-            Coordinates.Text = "x: " + Convert.ToString(dice.lastx) + " y: " + Convert.ToString(dice.lasty) + " value: " + Convert.ToString(dice.cordinates[dice.lastx, dice.lasty]);
         }
 
         private void label1_Click(object sender, EventArgs e)

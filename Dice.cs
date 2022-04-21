@@ -40,29 +40,67 @@ public class Dice
         }
     }
 
-	public void setUpXY(int x, int y, int value, bool klawisz)
+	public void setUpXY(int way)
     {
-		if (klawisz)
-		{
-			lastx = x;
-			lasty = y;
-
-			cordinatesValue[x, y] = value;
-		}
-        else
+		switch(way)
         {
-			lastx = x;
-			lasty = y;
-
-			cordinatesValue[x, y] = value;
-		}
+            case 1:
+                for (int y = 0; y < 5; y++)
+                {
+                    for (int x = 4; x > 0; x--)
+                    {
+                        
+                        cordinatesValue[x - 1, y] = cordinatesValue[x, y];
+                        cordinatesValue[x, y] = 0;
+                        Console.WriteLine(cordinatesValue[x, y]);
+                        Console.WriteLine(cordinatesValue[x - 1, y]);
+                    }
+                }
+                break;
+            case 2:
+                for (int y = 0; y < 5; y++)
+                {
+                    for (int x = 1; x < 5; x++)
+                    {
+                        cordinatesValue[x, y] = cordinatesValue[x - 1, y];
+                        cordinatesValue[x - 1, y] = 0;
+                        Console.WriteLine(cordinatesValue[x, y]);
+                        Console.WriteLine(cordinatesValue[x - 1, y]);
+                    }
+                }
+                break;
+            case 3:
+                for (int x = 0; x < 5; x++)
+                {
+                    for (int y = 4; y > 0; y--)
+                    {
+                        cordinatesValue[x, y - 1] = cordinatesValue[x, y];
+                        cordinatesValue[x, y] = 0;
+                        Console.WriteLine(cordinatesValue[x, y]);
+                        Console.WriteLine(cordinatesValue[x - 1, y]);
+                    }
+                }
+                break;
+            case 4:
+                for (int x = 0; x < 5; x++)
+                {
+                    for (int y = 1; y < 5; y++)
+                    {
+                        cordinatesValue[x, y] = cordinatesValue[x, y - 1];
+                        cordinatesValue[x, y - 1] = 0;
+                        Console.WriteLine(cordinatesValue[x, y]);
+                        Console.WriteLine(cordinatesValue[x - 1, y]);
+                    }
+                }
+                break;
+        }
     }
 
-	public void RandomBlock(bool klawisz)
+	public void RandomBlock()
     {
 		Random random = new Random();
 		int x = random.Next(5);
 		int y = random.Next(5);
-		setUpXY(x, y, 2, klawisz);
+		cordinatesValue[x, y] = 2;
     }
 }
