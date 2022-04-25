@@ -42,65 +42,84 @@ public class Dice
 
 	public void setUpXY(int way)
     {
-		switch(way)
+        for (int i = 0; i < 10; i++)
         {
-            case 1:
-                for (int y = 0; y < 5; y++)
-                {
-                    for (int x = 4; x > 0; x--)
+            switch (way)
+            {
+                case 1:
+                    for (int y = 0; y < 5; y++)
                     {
-                        
-                        cordinatesValue[x - 1, y] = cordinatesValue[x, y];
-                        cordinatesValue[x, y] = 0;
-                        Console.WriteLine(cordinatesValue[x, y]);
-                        Console.WriteLine(cordinatesValue[x - 1, y]);
+                        for (int x = 4; x > 0; x--)
+                        {
+                            if (cordinatesValue[x - 1, y] == cordinatesValue[x, y])
+                            {
+                                cordinatesValue[x - 1, y] += cordinatesValue[x, y];
+                                cordinatesValue[x, y] = 0;
+                            }
+                            Console.WriteLine("{" + Convert.ToString(x - 1) + ", " + Convert.ToString(y) + "} Value: " + Convert.ToString(cordinatesValue[x - 1, y]));
+                            Console.WriteLine("New: " + cordinatesValue[x, y]);
+                            Console.WriteLine("Last: " + cordinatesValue[x - 1, y]);
+                        }
                     }
-                }
-                break;
-            case 2:
-                for (int y = 0; y < 5; y++)
-                {
-                    for (int x = 1; x < 5; x++)
+                    break;
+                case 2:
+                    for (int y = 0; y < 5; y++)
                     {
-                        cordinatesValue[x, y] = cordinatesValue[x - 1, y];
-                        cordinatesValue[x - 1, y] = 0;
-                        Console.WriteLine(cordinatesValue[x, y]);
-                        Console.WriteLine(cordinatesValue[x - 1, y]);
+                        for (int x = 1; x < 5; x++)
+                        {
+                            if (cordinatesValue[x, y] == 0)
+                            {
+                                cordinatesValue[x, y] = cordinatesValue[x - 1, y];
+                                cordinatesValue[x - 1, y] = 0;
+                            }
+                            Console.WriteLine("New: " + cordinatesValue[x, y]);
+                            Console.WriteLine("Last: " + cordinatesValue[x - 1, y]);
+                        }
                     }
-                }
-                break;
-            case 3:
-                for (int x = 0; x < 5; x++)
-                {
-                    for (int y = 4; y > 0; y--)
+                    break;
+                case 3:
+                    for (int x = 0; x < 5; x++)
                     {
-                        cordinatesValue[x, y - 1] = cordinatesValue[x, y];
-                        cordinatesValue[x, y] = 0;
-                        Console.WriteLine(cordinatesValue[x, y]);
-                        Console.WriteLine(cordinatesValue[x - 1, y]);
+                        for (int y = 4; y > 0; y--)
+                        {
+                            if (cordinatesValue[x, y - 1] == 0)
+                            {
+                                cordinatesValue[x, y - 1] = cordinatesValue[x, y];
+                                cordinatesValue[x, y] = 0;
+                            }
+                            Console.WriteLine("New: " + cordinatesValue[x, y]);
+                            Console.WriteLine("last: " + cordinatesValue[x, y - 1]);
+                        }
                     }
-                }
-                break;
-            case 4:
-                for (int x = 0; x < 5; x++)
-                {
-                    for (int y = 1; y < 5; y++)
+                    break;
+                case 4:
+                    for (int x = 0; x < 5; x++)
                     {
-                        cordinatesValue[x, y] = cordinatesValue[x, y - 1];
-                        cordinatesValue[x, y - 1] = 0;
-                        Console.WriteLine(cordinatesValue[x, y]);
-                        Console.WriteLine(cordinatesValue[x - 1, y]);
+                        for (int y = 1; y < 5; y++)
+                        {
+                            if (cordinatesValue[x, y] == 0)
+                            {
+                                cordinatesValue[x, y] = cordinatesValue[x, y - 1];
+                                cordinatesValue[x, y - 1] = 0;
+                            }
+                            Console.WriteLine("New: " + cordinatesValue[x, y]);
+                            Console.WriteLine("Last: " + cordinatesValue[x, y - 1]);
+                        }
                     }
-                }
-                break;
+                    break;
+            }
         }
     }
 
 	public void RandomBlock()
     {
 		Random random = new Random();
-		int x = random.Next(5);
-		int y = random.Next(5);
+        int x, y;
+        do
+        {
+            x = random.Next(5);
+            y = random.Next(5);
+        } while (cordinatesValue[x, y] != 0);
 		cordinatesValue[x, y] = 2;
     }
 }

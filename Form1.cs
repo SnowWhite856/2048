@@ -15,11 +15,6 @@ namespace _2048._2
         Graphics grid;
         Dice dice = new Dice();
 
-        Brush bgBrush = new SolidBrush(Color.Black);
-        
-        Brush trueBrush = new SolidBrush(Color.LightCoral);
-
-        int[,,] DrawCoordinates = { { { 20, 220 }, { 120, 220 }, { 220, 220 }, { 320, 220 }, { 420, 220 } }, { { 20, 320 }, { 120, 320 }, { 220, 320 }, { 320, 320 }, { 420, 320 } }, { { 20, 420 }, { 120, 420 }, { 220, 420 }, { 320, 420 }, { 420, 420 } }, { { 20, 520 }, { 120, 520 }, { 220, 520 }, { 320, 520 }, { 420, 520 } }, { { 20, 620 }, { 120, 620 }, { 220, 620 }, { 320, 620 }, { 420, 620 } } };
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +23,10 @@ namespace _2048._2
         void GridCreate(Graphics grid)
         {
             Pen myPen = new Pen(Color.White);
-           
+            Brush textBrush = new SolidBrush(Color.Aqua);
+            Font textFont = new Font("Arial", 16);
+            StringFormat textFormat = new StringFormat();
+
             myPen.Width = 8.0F;
 
             grid.DrawRectangle(myPen, 20, 220, 100, 100);
@@ -91,12 +89,43 @@ namespace _2048._2
             grid.FillRectangle(dice.Check(2, 4), 220 + 3, 620 + 3, 94, 94);
             grid.FillRectangle(dice.Check(3, 4), 320 + 3, 620 + 3, 94, 94);
             grid.FillRectangle(dice.Check(4, 4), 420 + 3, 620 + 3, 94, 94);
+
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[0, 0]), textFont, textBrush, 20 + 40, 220 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[1, 0]), textFont, textBrush, 120 + 40, 220 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[2, 0]), textFont, textBrush, 220 + 40, 220 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[3, 0]), textFont, textBrush, 320 + 40, 220 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[4, 0]), textFont, textBrush, 420 + 40, 220 + 40, textFormat);
+
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[0, 1]), textFont, textBrush, 20 + 40, 320 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[1, 1]), textFont, textBrush, 120 + 40, 320 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[2, 1]), textFont, textBrush, 220 + 40, 320 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[3, 1]), textFont, textBrush, 320 + 40, 320 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[4, 1]), textFont, textBrush, 420 + 40, 320 + 40, textFormat);
+
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[0, 2]), textFont, textBrush, 20 + 40, 420 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[1, 2]), textFont, textBrush, 120 + 40, 420 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[2, 2]), textFont, textBrush, 220 + 40, 420 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[3, 2]), textFont, textBrush, 320 + 40, 420 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[4, 2]), textFont, textBrush, 420 + 40, 420 + 40, textFormat);
+
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[0, 3]), textFont, textBrush, 20 + 40, 520 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[1, 3]), textFont, textBrush, 120 + 40, 520 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[2, 3]), textFont, textBrush, 220 + 40, 520 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[3, 3]), textFont, textBrush, 320 + 40, 520 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[4, 3]), textFont, textBrush, 420 + 40, 520 + 40, textFormat);
+
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[0, 4]), textFont, textBrush, 20 + 40, 620 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[1, 4]), textFont, textBrush, 120 + 40, 620 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[2, 4]), textFont, textBrush, 220 + 40, 620 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[3, 4]), textFont, textBrush, 320 + 40, 620 + 40, textFormat);
+            grid.DrawString(Convert.ToString(dice.cordinatesValue[4, 4]), textFont, textBrush, 420 + 40, 620 + 40, textFormat);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+
         bool one = true;
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -106,7 +135,7 @@ namespace _2048._2
             if (one)
             {
 
-                dice.cordinatesValue[4, 0] = 2;
+                dice.RandomBlock();
             }
             GridCreate(e.Graphics);
 
@@ -117,21 +146,19 @@ namespace _2048._2
         {
             if(e.KeyValue == 65) //A
             {
-                this.Invalidate();
                 dice.setUpXY(1);
             }
             if (e.KeyValue == 68) //D
             {
-                this.Invalidate();
                 dice.setUpXY(2);
             }
             if (e.KeyValue == 87) //W
             {
-                this.Invalidate();
+                dice.setUpXY(3);
             }
             if (e.KeyValue == 83) //S
             {
-                this.Invalidate();
+                dice.setUpXY(4);
             }
             /*if(e.KeyValue == 82) //R
             {
@@ -139,10 +166,10 @@ namespace _2048._2
             }*/
             if(e.KeyValue == 84) //T
             {
-                Random random = new Random();
-                int x = random.Next(5);
-                int y = random.Next(5);
+                dice.RandomBlock();
             }
+            this.Invalidate();
+            dice.RandomBlock();
         }
 
         private void label1_Click(object sender, EventArgs e)
