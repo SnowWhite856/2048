@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DOM\\Documents\\2048\\2048.2.csproj": {}
+    "C:\\Users\\oliwe\\source\\repos\\2048.2\\2048.2\\2048.2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DOM\\Documents\\2048\\2048.2.csproj": {
+    "C:\\Users\\oliwe\\source\\repos\\2048.2\\2048.2\\2048.2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DOM\\Documents\\2048\\2048.2.csproj",
+        "projectUniqueName": "C:\\Users\\oliwe\\source\\repos\\2048.2\\2048.2\\2048.2.csproj",
         "projectName": "2048.2",
-        "projectPath": "C:\\Users\\DOM\\Documents\\2048\\2048.2.csproj",
-        "packagesPath": "C:\\Users\\DOM\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DOM\\Documents\\2048\\obj\\",
+        "projectPath": "C:\\Users\\oliwe\\source\\repos\\2048.2\\2048.2\\2048.2.csproj",
+        "packagesPath": "C:\\Users\\oliwe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\oliwe\\source\\repos\\2048.2\\2048.2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DOM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\oliwe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -49,6 +49,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.24, 3.1.24]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -57,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

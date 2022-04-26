@@ -29,3 +29,4 @@ C:\Users\DOM\Documents\2048\obj\Debug\netcoreapp3.1\2048.2.csproj.CoreCompileInp
 C:\Users\DOM\Documents\2048\obj\Debug\netcoreapp3.1\2048.2.dll
 C:\Users\DOM\Documents\2048\obj\Debug\netcoreapp3.1\2048.2.pdb
 C:\Users\DOM\Documents\2048\obj\Debug\netcoreapp3.1\2048.2.genruntimeconfig.cache
+C:\Users\oliwe\source\repos\2048.2\2048.2\obj\Debug\netcoreapp3.1\2048.2.GeneratedMSBuildEditorConfig.editorconfig

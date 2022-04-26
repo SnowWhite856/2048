@@ -12,6 +12,7 @@ public class Dice
 {
 	public int[,] cordinatesValue = new int[5,5];
 	public int lastx, lasty;
+    public bool lose = true;
 
 	public Dice()
     {
@@ -54,6 +55,27 @@ public class Dice
             }
         }
         return "Score: " + Convert.ToString(Score);
+    }
+
+    public bool LoseCheck()
+    {
+        int moves = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                if (cordinatesValue[i, j] == 0)
+                {
+                    moves++;
+                }
+            }
+        }
+        if(moves == 0)
+        {
+            lose = false;
+            return true;
+        }
+        return false;
     }
 
 	public void setUpXY(int way)
@@ -142,12 +164,20 @@ public class Dice
 	public void RandomBlock()
     {
 		Random random = new Random();
-        int x, y;
+        int x = 0;
+        int y = 0;
         do
         {
+            if (LoseCheck())
+            {
+                break;
+            }
             x = random.Next(5);
             y = random.Next(5);
         } while (cordinatesValue[x, y] != 0);
-		cordinatesValue[x, y] = 2;
+        if (!LoseCheck())
+        {
+            cordinatesValue[x, y] = 2;
+        }
     }
 }
