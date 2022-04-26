@@ -29,19 +29,20 @@ namespace _2048._2
         /// </summary>
         private void InitializeComponent()
         {
-            this.Coordinates = new System.Windows.Forms.Label();
+            this.ScoreText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // Coordinates
+            // ScoreText
             // 
-            this.Coordinates.AutoSize = true;
-            this.Coordinates.ForeColor = System.Drawing.Color.Snow;
-            this.Coordinates.Location = new System.Drawing.Point(12, 9);
-            this.Coordinates.Name = "Coordinates";
-            this.Coordinates.Size = new System.Drawing.Size(71, 15);
-            this.Coordinates.TabIndex = 0;
-            this.Coordinates.Text = "Coordinates";
-            this.Coordinates.Click += new System.EventHandler(this.label1_Click);
+            this.ScoreText.AutoSize = true;
+            this.ScoreText.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ScoreText.ForeColor = System.Drawing.Color.Snow;
+            this.ScoreText.Location = new System.Drawing.Point(12, 9);
+            this.ScoreText.Name = "ScoreText";
+            this.ScoreText.Size = new System.Drawing.Size(110, 37);
+            this.ScoreText.TabIndex = 0;
+            this.ScoreText.Text = "Score: 2";
+            this.ScoreText.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
@@ -49,7 +50,7 @@ namespace _2048._2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(539, 749);
-            this.Controls.Add(this.Coordinates);
+            this.Controls.Add(this.ScoreText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -64,7 +65,7 @@ namespace _2048._2
 
         #endregion
 
-        private System.Windows.Forms.Label Coordinates;
+        private System.Windows.Forms.Label ScoreText;
     }
 }
 

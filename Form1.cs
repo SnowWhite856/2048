@@ -140,6 +140,7 @@ namespace _2048._2
             GridCreate(e.Graphics);
 
             one = false;
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -168,8 +169,11 @@ namespace _2048._2
             {
                 dice.RandomBlock();
             }
-            this.Invalidate();
+
+            ScoreText.Text = dice.ScoreChange();
             dice.RandomBlock();
+
+            this.Invalidate();
         }
 
         private void label1_Click(object sender, EventArgs e)

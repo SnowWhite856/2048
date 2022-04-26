@@ -40,9 +40,25 @@ public class Dice
         }
     }
 
+    public String ScoreChange()
+    {
+        int Score = 2;
+        for(int y = 0; y < 5; y++)
+        {
+            for(int x = 0; x < 5; x++)
+            {
+                if(Score < cordinatesValue[x, y])
+                {
+                    Score = cordinatesValue[x, y];
+                }
+            }
+        }
+        return "Score: " + Convert.ToString(Score);
+    }
+
 	public void setUpXY(int way)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             switch (way)
             {
@@ -51,14 +67,16 @@ public class Dice
                     {
                         for (int x = 4; x > 0; x--)
                         {
-                            if (cordinatesValue[x - 1, y] == cordinatesValue[x, y])
+                            if (cordinatesValue[x - 1, y] == 0)
+                            {
+                                cordinatesValue[x - 1, y] = cordinatesValue[x, y];
+                                cordinatesValue[x, y] = 0;
+                            }
+                            else if (cordinatesValue[x - 1, y] == cordinatesValue[x, y])
                             {
                                 cordinatesValue[x - 1, y] += cordinatesValue[x, y];
                                 cordinatesValue[x, y] = 0;
                             }
-                            Console.WriteLine("{" + Convert.ToString(x - 1) + ", " + Convert.ToString(y) + "} Value: " + Convert.ToString(cordinatesValue[x - 1, y]));
-                            Console.WriteLine("New: " + cordinatesValue[x, y]);
-                            Console.WriteLine("Last: " + cordinatesValue[x - 1, y]);
                         }
                     }
                     break;
@@ -72,8 +90,11 @@ public class Dice
                                 cordinatesValue[x, y] = cordinatesValue[x - 1, y];
                                 cordinatesValue[x - 1, y] = 0;
                             }
-                            Console.WriteLine("New: " + cordinatesValue[x, y]);
-                            Console.WriteLine("Last: " + cordinatesValue[x - 1, y]);
+                            else if(cordinatesValue[x, y] == cordinatesValue[x - 1, y])
+                            {
+                                cordinatesValue[x, y] += cordinatesValue[x - 1, y];
+                                cordinatesValue[x - 1, y] = 0;
+                            }
                         }
                     }
                     break;
@@ -87,8 +108,11 @@ public class Dice
                                 cordinatesValue[x, y - 1] = cordinatesValue[x, y];
                                 cordinatesValue[x, y] = 0;
                             }
-                            Console.WriteLine("New: " + cordinatesValue[x, y]);
-                            Console.WriteLine("last: " + cordinatesValue[x, y - 1]);
+                            else if (cordinatesValue[x, y - 1] == cordinatesValue[x, y])
+                            {
+                                cordinatesValue[x, y - 1] += cordinatesValue[x, y];
+                                cordinatesValue[x, y] = 0;
+                            }
                         }
                     }
                     break;
@@ -97,18 +121,22 @@ public class Dice
                     {
                         for (int y = 1; y < 5; y++)
                         {
-                            if (cordinatesValue[x, y] == 0)
+                            if (cordinatesValue[x , y] == 0)
                             {
                                 cordinatesValue[x, y] = cordinatesValue[x, y - 1];
                                 cordinatesValue[x, y - 1] = 0;
                             }
-                            Console.WriteLine("New: " + cordinatesValue[x, y]);
-                            Console.WriteLine("Last: " + cordinatesValue[x, y - 1]);
+                            else if (cordinatesValue[x, y] == cordinatesValue[x, y - 1])
+                            {
+                                cordinatesValue[x, y] += cordinatesValue[x, y - 1];
+                                cordinatesValue[x, y - 1] = 0;
+                            }
                         }
                     }
                     break;
             }
         }
+        ScoreChange();
     }
 
 	public void RandomBlock()
