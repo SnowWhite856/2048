@@ -129,12 +129,11 @@ namespace _2048._2
         bool one = true;
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            grid = e.Graphics;
             //dice.RandomBlock();
 
             if (one)
             {
-
+                grid = e.Graphics;
                 dice.RandomBlock();
             }
             GridCreate(e.Graphics);
@@ -145,35 +144,38 @@ namespace _2048._2
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyValue == 65) //A
+            if (dice.LoseCheck(1))
             {
-                dice.setUpXY(1);
-            }
-            if (e.KeyValue == 68) //D
-            {
-                dice.setUpXY(2);
-            }
-            if (e.KeyValue == 87) //W
-            {
-                dice.setUpXY(3);
-            }
-            if (e.KeyValue == 83) //S
-            {
-                dice.setUpXY(4);
-            }
-            /*if(e.KeyValue == 82) //R
-            {
-                this.Invalidate();
-            }*/
-            if(e.KeyValue == 84) //T
-            {
+                if (e.KeyValue == 65) //A
+                {
+                    dice.setUpXY(1);
+                }
+                if (e.KeyValue == 68) //D
+                {
+                    dice.setUpXY(2);
+                }
+                if (e.KeyValue == 87) //W
+                {
+                    dice.setUpXY(3);
+                }
+                if (e.KeyValue == 83) //S
+                {
+                    dice.setUpXY(4);
+                }
+                /*if(e.KeyValue == 82) //R
+                {
+                    this.Invalidate();
+                }*/
+                if (e.KeyValue == 84) //T
+                {
+                    dice.RandomBlock();
+                }
+
+                ScoreText.Text = dice.ScoreChange();
                 dice.RandomBlock();
+
+                this.Invalidate();
             }
-
-            ScoreText.Text = dice.ScoreChange();
-            dice.RandomBlock();
-
-            this.Invalidate();
         }
 
         private void label1_Click(object sender, EventArgs e)
