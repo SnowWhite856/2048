@@ -129,11 +129,12 @@ namespace _2048._2
         bool one = true;
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            grid = e.Graphics;
             //dice.RandomBlock();
 
             if (one)
             {
-                grid = e.Graphics;
+
                 dice.RandomBlock();
             }
             GridCreate(e.Graphics);
@@ -144,7 +145,7 @@ namespace _2048._2
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (dice.LoseCheck(1))
+            if (dice.lose)
             {
                 if (e.KeyValue == 65) //A
                 {
@@ -162,19 +163,17 @@ namespace _2048._2
                 {
                     dice.setUpXY(4);
                 }
-                /*if(e.KeyValue == 82) //R
-                {
-                    this.Invalidate();
-                }*/
-                if (e.KeyValue == 84) //T
-                {
-                    dice.RandomBlock();
-                }
 
                 ScoreText.Text = dice.ScoreChange();
                 dice.RandomBlock();
-
-                this.Invalidate();
+                if (dice.LoseCheck())
+                {
+                    grid.Dispose();
+                }
+                else
+                {
+                    this.Invalidate();
+                }
             }
         }
 

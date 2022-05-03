@@ -11,6 +11,8 @@ using System.Windows.Forms;
 public class Dice
 {
 	public int[,] cordinatesValue = new int[5,5];
+	public int lastx, lasty;
+    public bool lose = true;
 
 	public Dice()
     {
@@ -20,79 +22,6 @@ public class Dice
             {
 				cordinatesValue[i, z] = 0;
             }
-        }
-    }
-    
-    public bool LoseCheck(int k)
-    {
-        int moves = 0;
-        switch (k)
-        {
-            case 1:
-                for (int y = 0; y < 5; y++)
-                {
-                    for (int x = 0; x < 5; x++)
-                    {
-                        if (cordinatesValue[x, y] == 0)
-                        {
-                            return true;
-                        }
-                    }
-                }
-                return false;
-                break;
-            case 2:
-                for (int y = 0; y < 5; y++)
-                {
-                    for (int x = 0; x < 4; x++)
-                    {
-                        if (cordinatesValue[x + 1, y] == cordinatesValue[x, y])
-                        {
-                            moves++;
-                        }
-                    }
-                }
-                for (int y = 0; y < 5; y++)
-                {
-                    for (int x = 4; x > 0; x--)
-                    {
-                        if (cordinatesValue[x, y] == cordinatesValue[x - 1, y])
-                        {
-                            moves++;
-                        }
-                    }
-                }
-                for (int x = 0; x < 5; x++)
-                {
-                    for (int y = 0; y < 4; y++)
-                    {
-                        if (cordinatesValue[x, y + 1] == cordinatesValue[x, y])
-                        {
-                            moves++;
-                        }
-                    }
-                }
-                for (int x = 0; x < 5; x++)
-                {
-                    for (int y = 4; y > 0; y--)
-                    {
-                        if (cordinatesValue[x, y] == cordinatesValue[x, y - 1])
-                        {
-                            moves++;
-                        }
-                    }
-                }
-                break;
-        }
-        if (moves != 0)
-        {
-            Console.WriteLine(moves);
-            return true;
-        }
-        else
-        {
-            Console.WriteLine("You Lose");
-            return false;
         }
     }
 
@@ -112,65 +41,6 @@ public class Dice
         }
     }
 
-    public void Add(int way)
-    {
-        switch(way)
-        {
-            case 1:
-                for(int y = 0; y < 5; y++)
-                {
-                    for (int x = 0; x < 4; x++)
-                    {
-                        if (cordinatesValue[x + 1, y] == cordinatesValue[x, y] && cordinatesValue[x, y] != 0)
-                        {
-                            cordinatesValue[x, y] += cordinatesValue[x + 1, y];
-                            cordinatesValue[x + 1, y] = 0;
-                        }
-                    }
-                }
-                break;
-            case 2:
-                for(int y = 0; y < 5; y++)
-                {
-                    for(int x = 4; x > 0; x--)
-                    {
-                        if(cordinatesValue[x, y] == cordinatesValue[x - 1, y] && cordinatesValue[x, y] != 0)
-                        {
-                            cordinatesValue[x, y] += cordinatesValue[x - 1, y];
-                            cordinatesValue[x - 1, y] = 0;
-                        }
-                    }
-                }
-                break;
-            case 3:
-                for (int x = 0; x < 5; x++)
-                {
-                    for (int y = 0; y < 4; y++)
-                    {
-                        if(cordinatesValue[x, y  + 1] == cordinatesValue[x, y] && cordinatesValue[x, y] != 0)
-                        {
-                            cordinatesValue[x, y] += cordinatesValue[x, y + 1];
-                            cordinatesValue[x, y + 1] = 0;
-                        }
-                    }
-                }
-                break;
-            case 4:
-                for (int x = 0; x < 5; x++)
-                {
-                    for (int y = 4; y > 0; y--)
-                    {
-                        if (cordinatesValue[x, y] == cordinatesValue[x, y - 1] && cordinatesValue[x, y] != 0)
-                        {
-                            cordinatesValue[x, y] += cordinatesValue[x, y - 1];
-                            cordinatesValue[x, y - 1] = 0;
-                        }
-                    }
-                }
-                break;
-        }
-    }
-
     public String ScoreChange()
     {
         int Score = 2;
@@ -185,6 +55,27 @@ public class Dice
             }
         }
         return "Score: " + Convert.ToString(Score);
+    }
+
+    public bool LoseCheck()
+    {
+        int moves = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                if (cordinatesValue[i, j] == 0)
+                {
+                    moves++;
+                }
+            }
+        }
+        if(moves == 0)
+        {
+            lose = false;
+            return true;
+        }
+        return false;
     }
 
 	public void setUpXY(int way)
@@ -203,9 +94,13 @@ public class Dice
                                 cordinatesValue[x - 1, y] = cordinatesValue[x, y];
                                 cordinatesValue[x, y] = 0;
                             }
+                            else if (cordinatesValue[x - 1, y] == cordinatesValue[x, y])
+                            {
+                                cordinatesValue[x - 1, y] += cordinatesValue[x, y];
+                                cordinatesValue[x, y] = 0;
+                            }
                         }
                     }
-                    Add(way);
                     break;
                 case 2:
                     for (int y = 0; y < 5; y++)
@@ -217,9 +112,13 @@ public class Dice
                                 cordinatesValue[x, y] = cordinatesValue[x - 1, y];
                                 cordinatesValue[x - 1, y] = 0;
                             }
+                            else if(cordinatesValue[x, y] == cordinatesValue[x - 1, y])
+                            {
+                                cordinatesValue[x, y] += cordinatesValue[x - 1, y];
+                                cordinatesValue[x - 1, y] = 0;
+                            }
                         }
                     }
-                    Add(way);
                     break;
                 case 3:
                     for (int x = 0; x < 5; x++)
@@ -231,9 +130,13 @@ public class Dice
                                 cordinatesValue[x, y - 1] = cordinatesValue[x, y];
                                 cordinatesValue[x, y] = 0;
                             }
+                            else if (cordinatesValue[x, y - 1] == cordinatesValue[x, y])
+                            {
+                                cordinatesValue[x, y - 1] += cordinatesValue[x, y];
+                                cordinatesValue[x, y] = 0;
+                            }
                         }
                     }
-                    Add(way);
                     break;
                 case 4:
                     for (int x = 0; x < 5; x++)
@@ -245,9 +148,13 @@ public class Dice
                                 cordinatesValue[x, y] = cordinatesValue[x, y - 1];
                                 cordinatesValue[x, y - 1] = 0;
                             }
+                            else if (cordinatesValue[x, y] == cordinatesValue[x, y - 1])
+                            {
+                                cordinatesValue[x, y] += cordinatesValue[x, y - 1];
+                                cordinatesValue[x, y - 1] = 0;
+                            }
                         }
                     }
-                    Add(way);
                     break;
             }
         }
@@ -257,14 +164,19 @@ public class Dice
 	public void RandomBlock()
     {
 		Random random = new Random();
-        int x, y;
-        if (LoseCheck(2))
+        int x = 0;
+        int y = 0;
+        do
         {
-            do
+            if (LoseCheck())
             {
-                x = random.Next(5);
-                y = random.Next(5);
-            } while (cordinatesValue[x, y] != 0);
+                break;
+            }
+            x = random.Next(5);
+            y = random.Next(5);
+        } while (cordinatesValue[x, y] != 0);
+        if (!LoseCheck())
+        {
             cordinatesValue[x, y] = 2;
         }
     }
